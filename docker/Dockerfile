@@ -21,6 +21,7 @@ RUN git clone -b master git://github.com/ihashacks/hello-world-nodejs.git /hello
 # Command to run at "docker run ..."
 CMD if [ -z $BRANCH ]; then BRANCH=master; fi; \
   cd /hello-world-nodejs \
+  && git fetch origin $BRANCH \
   && git checkout $BRANCH \
   && git pull \
   && git submodule init && git submodule update \
