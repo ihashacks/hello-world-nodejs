@@ -15,7 +15,9 @@ RUN curl -sL https://deb.nodesource.com/setup \
 
 RUN apt-get -y install nodejs
 
-# Checkout the hello world code branch master
+# Checkout the hello world code branch master - 'ADD' is a cache busting work-around
+# https://github.com/docker/docker/issues/1996
+ADD https://beacon.nist.gov/rest/record/last /tmp/cache_buster
 RUN git clone -b master git://github.com/ihashacks/hello-world-nodejs.git /hello-world-nodejs
 
 # Command to run at "docker run ..."
