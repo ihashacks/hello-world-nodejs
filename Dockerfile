@@ -20,6 +20,9 @@ RUN apt-get -y install nodejs
 ADD https://beacon.nist.gov/rest/record/last /tmp/cache_buster
 RUN git clone -b master git://github.com/ihashacks/hello-world-nodejs.git /hello-world-nodejs
 
+# expose it
+EXPOSE 1337
+
 # Command to run at "docker run ..."
 CMD if [ -z $BRANCH ]; then BRANCH=master; fi; \
       cd /hello-world-nodejs \
